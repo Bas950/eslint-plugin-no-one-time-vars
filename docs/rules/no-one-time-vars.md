@@ -21,3 +21,33 @@ console.log(testVar);
 // Do other stuff...
 console.log(testVar);
 ```
+
+## Rule Options
+
+- ignoredVariables
+
+### ignoredVariables
+
+This option allows you to ignore specified variable names.
+
+Add the option to the rule:
+
+```json
+{
+	"rules": {
+		"no-one-time-vars/rule-name": [
+			2,
+			{
+				"ignoredVariables": ["testVar"]
+			}
+		]
+	}
+}
+```
+
+Examples of **correct** code for this rule:
+
+```js
+var testVar = "once";
+console.log(testVar);
+```

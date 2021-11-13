@@ -24,6 +24,17 @@ ruleTester.run("no-one-time-vars", rule, {
       console.log(testVar);
       console.log(testVar);
       `
+		},
+		{
+			code: `
+      var testVar = 'once but ignored';
+      console.log(testVar);
+      `,
+			options: [
+				{
+					ignoredVariables: ["testVar"]
+				}
+			]
 		}
 	],
 	invalid: [
