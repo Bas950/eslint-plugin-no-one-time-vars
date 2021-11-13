@@ -22,25 +22,20 @@ Add `no-one-time-vars` to the plugins section of your `.eslintrc` configuration 
 
 ```json
 {
-    "plugins": [
-        "no-one-time-vars"
-    ]
+	"plugins": ["no-one-time-vars"]
 }
 ```
-
 
 Then configure the rules you want to use under the rules section.
 
 ```json
 {
-    "rules": {
-        "no-one-time-vars/rule-name": 2
-    }
+	"rules": {
+		"no-one-time-vars/rule-name": 2
+	}
 }
 ```
 
 ## Supported Rules
 
-* Fill in provided rules here
-
-
+- no-one-time-vars
