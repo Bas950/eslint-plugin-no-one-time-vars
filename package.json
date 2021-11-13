@@ -1,6 +1,6 @@
 {
 	"name": "eslint-plugin-no-one-time-vars",
-	"version": "1.0.2",
+	"version": "1.1.1",
 	"description": "Disallows one-time variables",
 	"keywords": [
 		"eslint",

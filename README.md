@@ -58,4 +58,9 @@ To add an option to the rule configuration do the following:
 
 ## Supported Options
 
-- ignoredVariables (Array of strings)
+- ignoredVariables
+    - type: `Array of strings`
+    - default: `[]`
+- allowInsideCallback
+    - type: `Boolean`
+    - default: `true`
