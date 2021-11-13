@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 const rule = require("../../../lib/rules/no-one-time-vars"),
-	RuleTester = require("eslint").RuleTester;
+  RuleTester = require("eslint").RuleTester;
 
 //------------------------------------------------------------------------------
 // Tests
@@ -17,27 +17,27 @@ const rule = require("../../../lib/rules/no-one-time-vars"),
 
 const ruleTester = new RuleTester();
 ruleTester.run("no-one-time-vars", rule, {
-	valid: [
-		{
-			code: `
-      var testVar = 'multiple times';
-      console.log(testVar);
-      console.log(testVar);
+  valid: [
+    {
+      code: `
+            var testVar = 'multiple times';
+            console.log(testVar);
+            console.log(testVar);
       `
-		}
-	],
-	invalid: [
-		{
-			code: `
-      var testVar = 'once';
-      console.log(testVar);
+    }
+  ],
+  invalid: [
+    {
+      code: `
+             var testVar = 'once';
+             console.log(testVar);
       `,
-			errors: [
-				{
-					message: "Variable 'testVar' is only used once.",
-					type: "Identifier"
-				}
-			]
-		}
-	]
+      errors: [
+        {
+          message: "Variable 'testVar' is only used once.",
+          type: "Identifier"
+        }
+      ]
+    }
+  ]
 });

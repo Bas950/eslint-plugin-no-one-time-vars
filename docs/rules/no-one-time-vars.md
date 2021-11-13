@@ -21,3 +21,20 @@ console.log(testVar);
 // Do other stuff...
 console.log(testVar);
 ```
+
+## Options
+### allowInsideCallback
+```yml
+type: boolean
+default: true
+```
+
+Allows variables to be used once insdide callback function.
+#
+**Example**: 
+```js
+var startedAt = Date.now();
+
+that.on("ready", () => console.log(Date.now() - startedAt));
+```
+
