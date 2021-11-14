@@ -25,23 +25,23 @@ console.log(testVar);
 ## Rule Options
 
 - ignoredVariables
+- AllowInsideCallback
 
 ### ignoredVariables
 
-This option allows you to ignore specified variable names.
-
+This option allows you to ignore specified variable names.\
 Add the option to the rule:
 
 ```json
 {
-	"rules": {
-		"no-one-time-vars/rule-name": [
-			2,
-			{
-				"ignoredVariables": ["testVar"]
-			}
-		]
-	}
+    "rules": {
+        "no-one-time-vars/rule-name": [
+            2,
+            {
+                "ignoredVariables": ["testVar"]
+            }
+        ]
+    }
 }
 ```
 
@@ -50,4 +50,21 @@ Examples of **correct** code for this rule:
 ```js
 var testVar = "once";
 console.log(testVar);
+```
+
+### AllowInsideCallback
+
+This option allows you to use variables in the callback functions once.\
+This option is enabled by default.
+
+Examples of **correct** code for this rule:
+
+```js
+var testVar = Date.now();
+
+module.exports = {
+    create: function () {
+        console.log(Date.now() - testVar);
+    }
+};
 ```
