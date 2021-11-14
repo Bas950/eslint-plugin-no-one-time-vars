@@ -23,7 +23,7 @@ ruleTester.run("no-one-time-vars", rule, {
             var testVar = 'multiple times';
             console.log(testVar);
             console.log(testVar);
-            `
+            `,
     },
     {
       code: `
@@ -59,6 +59,28 @@ ruleTester.run("no-one-time-vars", rule, {
             var testVar = 'once';
             console.log(testVar);
             `,
+      errors: [
+        {
+          message: "Variable 'testVar' is only used once.",
+          type: "Identifier"
+        }
+      ]
+    },
+    {
+      code: `
+            module.exports = {
+              create: function() {
+                var testVar = Date.now();
+
+                console.log(Date.now() - testVar);
+              }
+            }
+            `,
+      options: [
+        {
+          allowInsideCallback: true
+        }
+      ],
       errors: [
         {
           message: "Variable 'testVar' is only used once.",
