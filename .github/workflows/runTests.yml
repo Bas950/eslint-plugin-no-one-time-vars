@@ -1,7 +1,8 @@
 name: Run Tests
 on: ["push", "pull_request"]
 jobs:
-  publish:
+  tests:
+    name: Run Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -11,10 +12,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
-          cache: yarn
-
+        
       - name: Install dependencies
-        run: yarn
+        run: yarn install --frozen-lockfile
 
       - name: Run Tests
-      - run: yarn test
+        run: yarn run test
