@@ -62,9 +62,5 @@ Examples of **correct** code for this rule:
 ```js
 var testVar = Date.now();
 
-module.exports = {
-    create: function () {
-        console.log(Date.now() - testVar);
-    }
-};
+test.on("ready", () => console.log(Date.now() - testVar))
 ```
