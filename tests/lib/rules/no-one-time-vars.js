@@ -23,7 +23,7 @@ ruleTester.run("no-one-time-vars", rule, {
             var testVar = 'multiple times';
             console.log(testVar);
             console.log(testVar);
-            `,
+            `
     },
     {
       code: `
