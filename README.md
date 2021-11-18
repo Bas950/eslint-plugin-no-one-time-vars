@@ -23,7 +23,7 @@ file. You can omit the `eslint-plugin-` prefix:
 
 ```json
 {
-	"plugins": ["no-one-time-vars"]
+  "plugins": ["no-one-time-vars"]
 }
 ```
 
@@ -31,9 +31,9 @@ Then configure the rules you want to use under the rules section.
 
 ```json
 {
-	"rules": {
-		"no-one-time-vars/rule-name": 2
-	}
+  "rules": {
+    "no-one-time-vars/rule-name": "error"
+  }
 }
 ```
 
@@ -41,14 +41,14 @@ To add an option to the rule configuration do the following:
 
 ```json
 {
-	"rules": {
-		"no-one-time-vars/rule-name": [
-			2,
-			{
-				"option-name": option
-			}
-		]
-	}
+  "rules": {
+    "no-one-time-vars/rule-name": [
+      "error",
+      {
+        "option-name": "option-value"
+      }
+    ]
+  }
 }
 ```
 
@@ -59,8 +59,11 @@ To add an option to the rule configuration do the following:
 ## Supported Options
 
 - ignoredVariables
-    - type: `Array of strings`
-    - default: `[]`
+  - type: `Array of strings`
+  - default: `[]`
 - allowInsideCallback
-    - type: `Boolean`
-    - default: `true`
+  - type: `Boolean`
+  - default: `true`
+- ignoreFunctionVariables
+  - type: `Boolean`
+  - default: `true`
