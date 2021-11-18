@@ -25,44 +25,15 @@ console.log(testVar);
 ## Rule Options
 
 - ignoredVariables
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-### ignoredVariables
-
-This option allows you to ignore specified variable names.
-
-=======
 - AllowInsideCallback
 
 ### ignoredVariables
 
 This option allows you to ignore specified variable names.\
->>>>>>> 225b3f3 (parent e3fc276f666a92ec3b69eaeac579bf046e956147)
-=======
-- AllowInsideCallback
-
-### ignoredVariables
-
-This option allows you to ignore specified variable names.\
->>>>>>> c31171a (feat(no-one-time-vars): AllowInsideCallback option, Styling, CI)
 Add the option to the rule:
 
 ```json
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-	"rules": {
-		"no-one-time-vars/rule-name": [
-			2,
-			{
-				"ignoredVariables": ["testVar"]
-			}
-		]
-	}
-=======
-=======
->>>>>>> c31171a (feat(no-one-time-vars): AllowInsideCallback option, Styling, CI)
     "rules": {
         "no-one-time-vars/rule-name": [
             2,
@@ -71,10 +42,6 @@ Add the option to the rule:
             }
         ]
     }
-<<<<<<< HEAD
->>>>>>> 225b3f3 (parent e3fc276f666a92ec3b69eaeac579bf046e956147)
-=======
->>>>>>> c31171a (feat(no-one-time-vars): AllowInsideCallback option, Styling, CI)
 }
 ```
 
@@ -84,11 +51,6 @@ Examples of **correct** code for this rule:
 var testVar = "once";
 console.log(testVar);
 ```
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> c31171a (feat(no-one-time-vars): AllowInsideCallback option, Styling, CI)
 
 ### AllowInsideCallback
 
@@ -102,7 +64,3 @@ var testVar = Date.now();
 
 test.on("ready", () => console.log(Date.now() - testVar))
 ```
-<<<<<<< HEAD
->>>>>>> 225b3f3 (parent e3fc276f666a92ec3b69eaeac579bf046e956147)
-=======
->>>>>>> c31171a (feat(no-one-time-vars): AllowInsideCallback option, Styling, CI)
