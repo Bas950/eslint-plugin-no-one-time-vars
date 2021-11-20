@@ -143,8 +143,8 @@ ruleTester.run("no-one-time-vars", rule, {
         console.log(testVar);
       `,
       output: `
-        var [testVar] = ['once'];
-        console.log(testVar);
+        
+        console.log(['once'][0]);
       `,
       errors: [
         {
