@@ -15,21 +15,26 @@ const rule = require("../../../lib/rules/no-one-time-vars"),
 // Tests
 //------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester();
+const ruleTester = new RuleTester({
+  parserOptions: {
+    ecmaVersion: "latest"
+  }
+});
+
 ruleTester.run("no-one-time-vars", rule, {
   valid: [
     {
       code: `
-            var testVar = 'multiple times';
-            console.log(testVar);
-            console.log(testVar);
-            `
+        var testVar = 'multiple times';
+        console.log(testVar);
+        console.log(testVar);
+      `
     },
     {
       code: `
-            var testVar = 'once but ignored';
-            console.log(testVar);
-            `,
+        var testVar = 'once but ignored';
+        console.log(testVar);
+      `,
       options: [
         {
           ignoredVariables: ["testVar"]
@@ -38,17 +43,30 @@ ruleTester.run("no-one-time-vars", rule, {
     },
     {
       code: `
-            var testVar = Date.now();
+        var testVar = Date.now();
 
-            module.exports = {
-              create: function() {
-                  console.log(Date.now() - testVar);
-              }
-            }
-            `,
+        module.exports = {
+          create: function() {
+            console.log(Date.now() - testVar);
+          }
+        }
+      `,
       options: [
         {
           allowInsideCallback: true
+        }
+      ]
+    },
+    {
+      code: `
+        var testVar = function() {
+          return 'once but ignored';
+        }
+        console.log(testVar());
+      `,
+      options: [
+        {
+          ignoreFunctionVariables: true
         }
       ]
     }
@@ -56,26 +74,37 @@ ruleTester.run("no-one-time-vars", rule, {
   invalid: [
     {
       code: `
-            var testVar = 'once';
-            console.log(testVar);
-            `,
+        var testVar = 'once';
+        console.log(testVar);
+      `,
+      output: `
+        
+        console.log('once');
+      `,
       errors: [
         {
           message: "Variable 'testVar' is only used once.",
-          type: "Identifier"
+          type: "VariableDeclarator"
         }
       ]
     },
     {
       code: `
-            module.exports = {
-              create: function() {
-                var testVar = Date.now();
-
-                console.log(Date.now() - testVar);
-              }
-            }
-            `,
+        module.exports = {
+          create: function() {
+            var testVar = Date.now();
+            console.log(Date.now() - testVar);
+          }
+        }
+      `,
+      output: `
+        module.exports = {
+          create: function() {
+            
+            console.log(Date.now() - Date.now());
+          }
+        }
+      `,
       options: [
         {
           allowInsideCallback: true
@@ -84,7 +113,75 @@ ruleTester.run("no-one-time-vars", rule, {
       errors: [
         {
           message: "Variable 'testVar' is only used once.",
-          type: "Identifier"
+          type: "VariableDeclarator"
+        }
+      ]
+    },
+    {
+      code: `
+        var testVar = 'once';
+        console.log({
+          testVar
+        });
+      `,
+      output: `
+        
+        console.log({
+          testVar: 'once'
+        });
+      `,
+      errors: [
+        {
+          message: "Variable 'testVar' is only used once.",
+          type: "VariableDeclarator"
+        }
+      ]
+    },
+    {
+      code: `
+        var [testVar] = ['once'];
+        console.log(testVar);
+      `,
+      output: `
+        
+        console.log(['once'][0]);
+      `,
+      errors: [
+        {
+          message: "Variable 'testVar' is only used once.",
+          type: "VariableDeclarator"
+        }
+      ]
+    },
+    {
+      code: `
+        var [,testVar] = [1,2];
+        console.log(testVar);
+      `,
+      output: `
+        
+        console.log([1,2][1]);
+      `,
+      errors: [
+        {
+          message: "Variable 'testVar' is only used once.",
+          type: "VariableDeclarator"
+        }
+      ]
+    },
+    {
+      code: `
+        var {testVar} = {testVar: 'once'};
+        console.log(testVar);
+      `,
+      output: `
+        
+        console.log({testVar: 'once'}.testVar);
+      `,
+      errors: [
+        {
+          message: "Variable 'testVar' is only used once.",
+          type: "VariableDeclarator"
         }
       ]
     }

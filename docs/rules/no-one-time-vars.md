@@ -1,7 +1,5 @@
 # Disallows one-time variables (no-one-time-vars)
 
-Please describe the origin of the rule here.
-
 ## Rule Details
 
 This rule aims to remove "useless" variables by disallowing one-time variables.
@@ -25,7 +23,8 @@ console.log(testVar);
 ## Rule Options
 
 - ignoredVariables
-- AllowInsideCallback
+- allowInsideCallback
+- ignoreFunctionVariables
 
 ### ignoredVariables
 
@@ -34,14 +33,14 @@ Add the option to the rule:
 
 ```json
 {
-    "rules": {
-        "no-one-time-vars/rule-name": [
-            2,
-            {
-                "ignoredVariables": ["testVar"]
-            }
-        ]
-    }
+  "rules": {
+    "no-one-time-vars/rule-name": [
+      2,
+      {
+        "ignoredVariables": ["testVar"]
+      }
+    ]
+  }
 }
 ```
 
@@ -52,7 +51,7 @@ var testVar = "once";
 console.log(testVar);
 ```
 
-### AllowInsideCallback
+### allowInsideCallback
 
 This option allows you to use variables in the callback functions once.\
 This option is enabled by default.
@@ -62,5 +61,19 @@ Examples of **correct** code for this rule:
 ```js
 var testVar = Date.now();
 
-test.on("ready", () => console.log(Date.now() - testVar))
+test.on("ready", () => console.log(Date.now() - testVar));
+```
+
+### ignoreFunctionVariables
+
+This option allows you to use the function variables once.\
+This option is enabled by default.
+
+Examples of **correct** code for this rule:
+
+```js
+var testVar = function () {
+  return "once";
+};
+console.log(testVar());
 ```
