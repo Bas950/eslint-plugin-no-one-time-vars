@@ -214,7 +214,7 @@ ruleTester.run("no-one-time-vars", rule, {
       `,
       output: `
         function test() {
-
+          
           console.log('once');
         }
 
