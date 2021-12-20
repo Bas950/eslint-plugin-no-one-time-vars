@@ -69,6 +69,19 @@ ruleTester.run("no-one-time-vars", rule, {
           ignoreFunctionVariables: true
         }
       ]
+    },
+    {
+      code: `
+        if (true) {
+          const testVar = () => 'once';
+          testVar();
+        } else {
+          const testVar = 0;
+          if (testVar) {
+            console.log(testVar);
+          }
+        }
+      `
     }
   ],
   invalid: [
