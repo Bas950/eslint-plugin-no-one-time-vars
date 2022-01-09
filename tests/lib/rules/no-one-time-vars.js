@@ -86,7 +86,7 @@ ruleTester.run("no-one-time-vars", rule, {
     {
       code: `
         function createPromise() {
-          retrun new Promise((resolve) => resolve(1));
+          return new Promise((resolve) => resolve(1));
         }
 
         async function test() {
