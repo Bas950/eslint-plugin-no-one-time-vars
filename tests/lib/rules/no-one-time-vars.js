@@ -82,6 +82,12 @@ ruleTester.run("no-one-time-vars", rule, {
           }
         }
       `
+    },
+    {
+      code: `
+        const testVar = await somePromise;
+        console.log(testVar);
+      `
     }
   ],
   invalid: [
