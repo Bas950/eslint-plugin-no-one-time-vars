@@ -85,8 +85,14 @@ ruleTester.run("no-one-time-vars", rule, {
     },
     {
       code: `
-        const testVar = await somePromise;
-        console.log(testVar);
+        function createPromise() {
+          retrun new Promise((resolve) => resolve(1));
+        }
+
+        async function test() {
+          const testVar = await createPromise();
+          console.log(testVar);
+        }
       `
     }
   ],
