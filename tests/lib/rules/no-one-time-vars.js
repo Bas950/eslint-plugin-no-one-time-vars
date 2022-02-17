@@ -105,6 +105,24 @@ ruleTester.run("no-one-time-vars", rule, {
           ignoreObjectDestructuring: true
         }
       ]
+    },
+    {
+
+      code: `
+
+        const {text, test} = {text: "ignored", test: null};
+
+        console.log(text, test);
+
+      `,
+
+      
+          
+
+       
+
+
+
     }
   ],
   invalid: [
