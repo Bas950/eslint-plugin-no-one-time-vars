@@ -269,7 +269,7 @@ ruleTester.run("no-one-time-vars", rule, {
 
         if (true) {
           var test = 'once';
-          if (test.includes('o') {
+          if (test.includes('o')) {
             obj.b = test.slice(1);
           } else {
             obj.a = test;
@@ -287,7 +287,7 @@ ruleTester.run("no-one-time-vars", rule, {
 
         if (true) {
           var test = 'once';
-          if (test.includes('o') {
+          if (test.includes('o')) {
             obj.b = test.slice(1);
           } else {
             obj.a = test;
