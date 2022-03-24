@@ -284,7 +284,7 @@ ruleTester.run("no-one-time-vars", rule, {
         if (true) {
           var test = 'once';
           console.log(test, test);
-        } else {
+        } else if (false) {
           
           obj.a = 'once'.slice(1);
         } else {
