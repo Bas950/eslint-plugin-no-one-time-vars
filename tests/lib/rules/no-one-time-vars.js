@@ -269,7 +269,11 @@ ruleTester.run("no-one-time-vars", rule, {
 
         if (true) {
           var test = 'once';
-          console.log(test, test);
+          if (test.includes('o') {
+            obj.b = test.slice(1);
+          } else {
+            obj.a = test;
+          }
         } else if (false) {
           var test = 'once';
           obj.a = test.slice(1);
@@ -283,7 +287,11 @@ ruleTester.run("no-one-time-vars", rule, {
 
         if (true) {
           var test = 'once';
-          console.log(test, test);
+          if (test.includes('o') {
+            obj.b = test.slice(1);
+          } else {
+            obj.a = test;
+          }
         } else if (false) {
           
           obj.a = 'once'.slice(1);
@@ -296,12 +304,12 @@ ruleTester.run("no-one-time-vars", rule, {
         {
           message: "Variable 'test' is only used once.",
           type: "VariableDeclarator",
-          line: 8
+          line: 12
         },
         {
           message: "Variable 'test' is only used once.",
           type: "VariableDeclarator",
-          line: 11
+          line: 15
         }
       ]
     }
