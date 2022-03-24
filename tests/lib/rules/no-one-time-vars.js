@@ -262,6 +262,38 @@ ruleTester.run("no-one-time-vars", rule, {
           line: 3
         }
       ]
+    },
+    {
+      code: `
+        if (true) {
+          var test = 'once';
+          console.log(test);
+        } else {
+          var test = 'once';
+          console.log(test);
+        }
+      `,
+      output: `
+        if (true) {
+          
+          console.log('once');
+        } else {
+          
+          console.log('once');
+        }
+      `,
+      errors: [
+        {
+          message: "Variable 'test' is only used once.",
+          type: "VariableDeclarator",
+          line: 3
+        },
+        {
+          message: "Variable 'test' is only used once.",
+          type: "VariableDeclarator",
+          line: 6
+        }
+      ]
     }
   ]
 });
