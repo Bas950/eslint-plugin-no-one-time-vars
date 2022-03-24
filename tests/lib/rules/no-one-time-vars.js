@@ -279,6 +279,8 @@ ruleTester.run("no-one-time-vars", rule, {
         }
       `,
       output: `
+        var obj = {};
+
         if (true) {
           var test = 'once';
           console.log(test, test);
@@ -294,12 +296,12 @@ ruleTester.run("no-one-time-vars", rule, {
         {
           message: "Variable 'test' is only used once.",
           type: "VariableDeclarator",
-          line: 6
+          line: 7
         },
         {
           message: "Variable 'test' is only used once.",
           type: "VariableDeclarator",
-          line: 9
+          line: 10
         }
       ]
     }
