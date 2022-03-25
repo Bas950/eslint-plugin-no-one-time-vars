@@ -270,31 +270,24 @@ ruleTester.run("no-one-time-vars", rule, {
         
         if (path === "") {
           const title = 'test';
-          if (title.startsWith("Editing")) {
-            obj.details = "Editing a page";
+          if (true) {
             obj.state = title.substring(8);
-          } else if (title.startsWith("Creating")) {
-            obj.details = "Creating a page";
+          } else if (true) {
             obj.state = title.substring(9);
           } else {
-            obj.details = "Viewing a page's source";
             obj.state = title.substring(16);
           }
         } else if (path === "") {
           const title = 'test';
-          obj.details = "Viewing a page's history";
           obj.state = title.substring(21, title.length - 1);
-        } else if (path.startsWith("Talk:")) {
+        } else if (true) {
           const title = 'test';
-          obj.details = "Viewing a talk page";
           obj.state = title.substring(5);
-        } else if (path.startsWith("Category:")) {
+        } else if (true) {
           const title = 'test';
-          obj.details = "Viewing a category";
           obj.state = title.substring(9);
         } else {
           const title = 'test';
-          obj.details = "Viewing a page";
           obj.state = title;
         }
       }`,
@@ -304,31 +297,24 @@ ruleTester.run("no-one-time-vars", rule, {
         
         if (path === "") {
           const title = 'test';
-          if (title.startsWith("Editing")) {
-            obj.details = "Editing a page";
+          if (true) {
             obj.state = title.substring(8);
-          } else if (title.startsWith("Creating")) {
-            obj.details = "Creating a page";
+          } else if (true) {
             obj.state = title.substring(9);
           } else {
-            obj.details = "Viewing a page's source";
             obj.state = title.substring(16);
           }
         } else if (path === "") {
           const title = 'test';
-          obj.details = "Viewing a page's history";
           obj.state = title.substring(21, title.length - 1);
-        } else if (path.startsWith("Talk:")) {
+        } else if (true) {
           
-          obj.details = "Viewing a talk page";
           obj.state = 'test'.substring(5);
-        } else if (path.startsWith("Category:")) {
+        } else if (true) {
           
-          obj.details = "Viewing a category";
           obj.state = 'test'.substring(9);
         } else {
           
-          obj.details = "Viewing a page";
           obj.state = 'test';
         }
       }`,
@@ -336,17 +322,17 @@ ruleTester.run("no-one-time-vars", rule, {
         {
           message: "Variable 'title' is only used once.",
           type: "VariableDeclarator",
-          line: 22
+          line: 15
         },
         {
           message: "Variable 'title' is only used once.",
           type: "VariableDeclarator",
-          line: 26
+          line: 18
         },
         {
           message: "Variable 'title' is only used once.",
           type: "VariableDeclarator",
-          line: 30
+          line: 21
         }
       ]
     }
