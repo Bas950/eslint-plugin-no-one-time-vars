@@ -268,7 +268,7 @@ ruleTester.run("no-one-time-vars", rule, {
         const obj = {},
           path = 'test';
         
-        if (path === "" && /^\?.*action=edit/.test(obj.search)) {
+        if (path === "") {
           const title = 'test';
           if (title.startsWith("Editing")) {
             obj.details = "Editing a page";
@@ -280,7 +280,7 @@ ruleTester.run("no-one-time-vars", rule, {
             obj.details = "Viewing a page's source";
             obj.state = title.substring(16);
           }
-        } else if (path === "" && /^\?.*action=history/.test(obj.search)) {
+        } else if (path === "") {
           const title = 'test';
           obj.details = "Viewing a page's history";
           obj.state = title.substring(21, title.length - 1);
@@ -302,7 +302,7 @@ ruleTester.run("no-one-time-vars", rule, {
         const obj = {},
           path = 'test';
         
-        if (path === "" && /^\?.*action=edit/.test(obj.search)) {
+        if (path === "") {
           const title = 'test';
           if (title.startsWith("Editing")) {
             obj.details = "Editing a page";
@@ -314,7 +314,7 @@ ruleTester.run("no-one-time-vars", rule, {
             obj.details = "Viewing a page's source";
             obj.state = title.substring(16);
           }
-        } else if (path === "" && /^\?.*action=history/.test(obj.search)) {
+        } else if (path === "") {
           const title = 'test';
           obj.details = "Viewing a page's history";
           obj.state = title.substring(21, title.length - 1);
