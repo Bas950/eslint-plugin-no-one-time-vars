@@ -7,14 +7,14 @@ This rule aims to remove "useless" variables by disallowing one-time variables.
 Examples of **incorrect** code for this rule:
 
 ```js
-var testVar = "once";
+const testVar = "once";
 console.log(testVar);
 ```
 
 Examples of **correct** code for this rule:
 
 ```js
-var testVar = "multiple times";
+const testVar = "multiple times";
 console.log(testVar);
 // Do other stuff...
 console.log(testVar);
@@ -47,33 +47,44 @@ Add the option to the rule:
 Examples of **correct** code for this rule:
 
 ```js
-var testVar = "once";
+const testVar = "once";
 console.log(testVar);
 ```
 
 ### allowInsideCallback
 
-This option allows you to use variables in the callback functions once.\
+This option allows you to use variables in the callback functions.\
 This option is enabled by default.
 
 Examples of **correct** code for this rule:
 
 ```js
-var testVar = Date.now();
+const testVar = Date.now();
 
 test.on("ready", () => console.log(Date.now() - testVar));
 ```
 
 ### ignoreFunctionVariables
 
-This option allows you to use the function variables once.\
+This option allows you to use the function variables.\
 This option is enabled by default.
 
 Examples of **correct** code for this rule:
 
 ```js
-var testVar = function () {
+const testVar = function () {
   return "once";
 };
 console.log(testVar());
+```
+
+### ignoreObjectDestructuring
+
+This option allows you to use object destructuring variables.
+
+Examples of **correct** code for this rule:
+
+```js
+const {test} = {test: "hi"};
+console.log(test);
 ```
