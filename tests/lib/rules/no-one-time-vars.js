@@ -116,9 +116,9 @@ ruleTester.run("no-one-time-vars", rule, {
     {
       code: `
         {
-			    const test = 'test';
-          if (test)	console.log(test);
-		    }
+          const test = 'test';
+          if (test) console.log(test);
+        }
       `
     }
   ],
@@ -350,30 +350,184 @@ ruleTester.run("no-one-time-vars", rule, {
           const test = 'test';
           console.log(test);
         }
-        
-        {
-          const test = 'test';
-          console.log(test);
-        }
+
+        const test = () => 'test';
+        test();
       `,
       output: `
         {
           
           console.log('test');
         }
-        
-        {
-          
-          console.log('test');
-        }
+
+        const test = () => 'test';
+        test();
       `,
       errors: [
         {
           message: "Variable 'test' is only used once.",
           type: "VariableDeclarator"
-        },
+        }
+      ]
+    },
+    {
+      code: `
+        {
+          if (true) {
+            const [test] = ['test'];
+            console.log(test);
+          }
+        }
+
+        const test = () => 'test';
+        test();
+      `,
+      output: `
+        {
+          if (true) {
+            
+            console.log(['test'][0]);
+          }
+        }
+
+        const test = () => 'test';
+        test();
+      `,
+      errors: [
         {
           message: "Variable 'test' is only used once.",
+          type: "VariableDeclarator"
+        }
+      ]
+    },
+    {
+      code: `
+        if (true) {
+          const [splitString] = "test".split("|");
+          obj.state = splitString;
+        } else if (true) {
+          if (true) {
+            const [splitString] = "test".split("|");
+            obj.state = splitString;
+          } else if (true) {
+            if (true) {
+              const [splitString] = "test".split("|");
+              obj.state = splitString;
+            } else if (true) {
+              const [splitString] = "test".split("|");
+              obj.state = splitString;
+            } else {
+              if (true) {
+                const [splitString] = "test".split("|");
+                obj.state = \`Test: \${splitString}\`;
+              }
+            }
+          } else {
+            switch ("test") {
+              case "test": {
+                if (true) {
+                  const [splitString] = "test".split("|");
+                  obj.details = \`Test: \${splitString}\`;
+                }
+                break;
+              }
+              case "test": {
+                if (true) {
+                  const [splitString] = "test".split("|");
+                  obj.state = splitString;
+                }
+                break;
+              }
+              case "test": {
+                if (true) {
+                  const [splitString] = "test".split("|");
+                  obj.state = splitString;
+                }
+                break;
+              }
+            }
+          }
+        }
+      `,
+      output: `
+        if (true) {
+          
+          obj.state = "test".split("|")[0];
+        } else if (true) {
+          if (true) {
+            
+            obj.state = "test".split("|")[0];
+          } else if (true) {
+            if (true) {
+              
+              obj.state = "test".split("|")[0];
+            } else if (true) {
+              
+              obj.state = "test".split("|")[0];
+            } else {
+              if (true) {
+                
+                obj.state = \`Test: \${"test".split("|")[0]}\`;
+              }
+            }
+          } else {
+            switch ("test") {
+              case "test": {
+                if (true) {
+                  
+                  obj.details = \`Test: \${"test".split("|")[0]}\`;
+                }
+                break;
+              }
+              case "test": {
+                if (true) {
+                  
+                  obj.state = "test".split("|")[0];
+                }
+                break;
+              }
+              case "test": {
+                if (true) {
+                  
+                  obj.state = "test".split("|")[0];
+                }
+                break;
+              }
+            }
+          }
+        }
+      `,
+      errors: [
+        {
+          message: "Variable 'splitString' is only used once.",
+          type: "VariableDeclarator"
+        },
+        {
+          message: "Variable 'splitString' is only used once.",
+          type: "VariableDeclarator"
+        },
+        {
+          message: "Variable 'splitString' is only used once.",
+          type: "VariableDeclarator"
+        },
+        {
+          message: "Variable 'splitString' is only used once.",
+          type: "VariableDeclarator"
+        },
+        {
+          message: "Variable 'splitString' is only used once.",
+          type: "VariableDeclarator"
+        },
+        {
+          message: "Variable 'splitString' is only used once.",
+          type: "VariableDeclarator"
+        },
+        {
+          message: "Variable 'splitString' is only used once.",
+          type: "VariableDeclarator"
+        },
+        {
+          message: "Variable 'splitString' is only used once.",
           type: "VariableDeclarator"
         }
       ]
