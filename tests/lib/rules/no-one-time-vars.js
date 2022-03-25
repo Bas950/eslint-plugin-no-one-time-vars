@@ -346,7 +346,7 @@ ruleTester.run("no-one-time-vars", rule, {
         {
           message: "Variable 'title' is only used once.",
           type: "VariableDeclarator",
-          line: 26
+          line: 30
         }
       ]
     }
