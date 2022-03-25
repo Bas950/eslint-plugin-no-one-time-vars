@@ -111,7 +111,7 @@ ruleTester.run("no-one-time-vars", rule, {
         const {text, test} = {text: "ignored", test: null};
 
         console.log(text, test);
-      `,
+      `
     }
   ],
   invalid: [
@@ -322,17 +322,17 @@ ruleTester.run("no-one-time-vars", rule, {
         {
           message: "Variable 'title' is only used once.",
           type: "VariableDeclarator",
-          line: 15
-        },
-        {
-          message: "Variable 'title' is only used once.",
-          type: "VariableDeclarator",
           line: 18
         },
         {
           message: "Variable 'title' is only used once.",
           type: "VariableDeclarator",
           line: 21
+        },
+        {
+          message: "Variable 'title' is only used once.",
+          type: "VariableDeclarator",
+          line: 24
         }
       ]
     }
