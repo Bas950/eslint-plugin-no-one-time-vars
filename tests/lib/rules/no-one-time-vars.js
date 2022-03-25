@@ -298,7 +298,7 @@ ruleTester.run("no-one-time-vars", rule, {
           obj.state = title;
         }
       `,
-      output: `
+      output: `{
         const obj = {},
           path = 'test';
         
@@ -331,7 +331,7 @@ ruleTester.run("no-one-time-vars", rule, {
           obj.details = "Viewing a page";
           obj.state = 'test';
         }
-      `,
+      }`,
       errors: [
         {
           message: "Variable 'title' is only used once.",
