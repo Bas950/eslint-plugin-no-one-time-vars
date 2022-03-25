@@ -67,3 +67,6 @@ To add an option to the rule configuration do the following:
 - ignoreFunctionVariables
   - type: `Boolean`
   - default: `true`
+- ignoreObjectDestructuring:
+  - type: `Boolean`
+  - default: `false`
