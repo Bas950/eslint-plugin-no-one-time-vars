@@ -264,7 +264,7 @@ ruleTester.run("no-one-time-vars", rule, {
       ]
     },
     {
-      code: `
+      code: `{
         const obj = {},
           path = 'test';
         
@@ -297,7 +297,7 @@ ruleTester.run("no-one-time-vars", rule, {
           obj.details = "Viewing a page";
           obj.state = title;
         }
-      `,
+      }`,
       output: `{
         const obj = {},
           path = 'test';
