@@ -97,8 +97,8 @@ ruleTester.run("no-one-time-vars", rule, {
     },
     {
       code: `
-        const {text} = {text: "ignored"};
-        console.log(text);
+        const {text: test} = {text: "ignored"};
+        console.log(test);
       `,
       options: [
         {
