@@ -97,8 +97,8 @@ ruleTester.run("no-one-time-vars", rule, {
     },
     {
       code: `
-        const {text} = {text: "ignored"};
-        console.log(text);
+        const {text: test} = {text: "ignored"};
+        console.log(test);
       `,
       options: [
         {
@@ -222,8 +222,8 @@ ruleTester.run("no-one-time-vars", rule, {
     },
     {
       code: `
-        var {testVar} = {testVar: 'once'};
-        console.log(testVar);
+        var {testVar: test} = {testVar: 'once'};
+        console.log(test);
       `,
       output: `
         
@@ -231,7 +231,7 @@ ruleTester.run("no-one-time-vars", rule, {
       `,
       errors: [
         {
-          message: "Variable 'testVar' is only used once.",
+          message: "Variable 'test' is only used once.",
           type: "VariableDeclarator"
         }
       ]
