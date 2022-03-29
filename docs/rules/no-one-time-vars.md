@@ -85,6 +85,6 @@ This option allows you to use object destructuring variables.
 Examples of **correct** code for this rule:
 
 ```js
-const {test} = {test: "hi"};
+const { test } = { test: "hi" };
 console.log(test);
 ```
