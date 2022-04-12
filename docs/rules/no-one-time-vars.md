@@ -78,6 +78,16 @@ const testVar = function () {
 console.log(testVar());
 ```
 
+### ignoreArrayVaraibles
+
+This option allows you to use array variables.\
+If number is specified this option will allow array variables with length that is >=
+specified value.
+
+### ignoreObjectVariables
+
+This option allows you to use objects variables.
+
 ### ignoreObjectDestructuring
 
 This option allows you to use object destructuring variables.
