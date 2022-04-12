@@ -120,6 +120,32 @@ ruleTester.run("no-one-time-vars", rule, {
           if (test) console.log(test);
         }
       `
+    },
+    {
+      code: `
+        const test = [];
+        console.log(test);
+
+        const test2 = {};
+        console.log(test2);
+      `,
+      options: [
+        {
+          ignoreArrayVariables: true,
+          ignoreObjectVariables: true
+        }
+      ]
+    },
+    {
+      code: `
+        const test = [1, 2];
+        console.log(test);
+      `,
+      options: [
+        {
+          ignoreArrayVariables: 2
+        }
+      ]
     }
   ],
   invalid: [
@@ -544,6 +570,57 @@ ruleTester.run("no-one-time-vars", rule, {
       errors: [
         {
           message: "Variable 'testVar' is only used once.",
+          type: "VariableDeclarator"
+        }
+      ]
+    },
+    {
+      code: `
+        (async () => {
+          const path = window.location.pathname.split("/").slice(1);
+          switch(path[0]) {
+            case "true": {
+              console.log(true);
+              break;
+            }
+          }
+        });
+      `,
+      output: `
+        (async () => {
+          
+          switch(window.location.pathname.split("/").slice(1)[0]) {
+            case "true": {
+              console.log(true);
+              break;
+            }
+          }
+        });
+      `,
+      errors: [
+        {
+          message: "Variable 'path' is only used once.",
+          type: "VariableDeclarator"
+        }
+      ]
+    },
+    {
+      code: `
+        const test = [1, 2];
+        console.log(test);
+      `,
+      output: `
+        
+        console.log([1, 2]);
+      `,
+      options: [
+        {
+          ignoreArrayVariables: 3
+        }
+      ],
+      errors: [
+        {
+          message: "Variable 'test' is only used once.",
           type: "VariableDeclarator"
         }
       ]
