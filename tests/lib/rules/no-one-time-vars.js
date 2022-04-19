@@ -17,7 +17,8 @@ const rule = require("../../../lib/rules/no-one-time-vars"),
 
 const ruleTester = new RuleTester({
   parserOptions: {
-    ecmaVersion: "latest"
+    ecmaVersion: "latest",
+    sourceType: "module"
   }
 });
 
@@ -146,6 +147,12 @@ ruleTester.run("no-one-time-vars", rule, {
           ignoreArrayVariables: 2
         }
       ]
+    },
+    {
+      code: `
+        const test = {};
+        export default test;
+      `
     }
   ],
   invalid: [
@@ -622,6 +629,27 @@ ruleTester.run("no-one-time-vars", rule, {
         {
           message: "Variable 'test' is only used once.",
           type: "VariableDeclarator"
+        }
+      ]
+    },
+    {
+      code: `
+        const test = {};
+        export default test;
+      `,
+      output: `
+        
+        export default {};
+      `,
+      errors: [
+        {
+          message: "Variable 'test' is only used once.",
+          type: "VariableDeclarator"
+        }
+      ],
+      options: [
+        {
+          ignoreExportedVariables: false
         }
       ]
     }

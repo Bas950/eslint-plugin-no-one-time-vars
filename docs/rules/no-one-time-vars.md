@@ -98,3 +98,15 @@ Examples of **correct** code for this rule:
 const { test } = { test: "hi" };
 console.log(test);
 ```
+
+### ignoreExportedVariables
+
+This option allows you to export the variables.\
+This option is enabled by default.
+
+Examples of **correct** code for this rule:
+
+```js
+const test = {};
+export default test;
+```

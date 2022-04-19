@@ -76,3 +76,6 @@ To add an option to the rule configuration do the following:
 - ignoreObjectDestructuring:
   - type: `Boolean`
   - default: `false`
+- ignoreExportedVariables:
+  - type: `Boolean`
+  - default: `true`
