@@ -32,7 +32,7 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
   "rules": {
-    "no-one-time-vars/rule-name": "error"
+    "no-one-time-vars/no-one-time-vars": "error"
   }
 }
 ```
@@ -42,7 +42,7 @@ To add an option to the rule configuration do the following:
 ```json
 {
   "rules": {
-    "no-one-time-vars/rule-name": [
+    "no-one-time-vars/no-one-time-vars": [
       "error",
       {
         "option-name": "option-value"
