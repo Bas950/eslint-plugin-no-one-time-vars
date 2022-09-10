@@ -652,6 +652,22 @@ ruleTester.run("no-one-time-vars", rule, {
           ignoreExportedVariables: false
         }
       ]
+    },
+    {
+      code: `
+          const [test] = [] || [];
+          console.log(test);
+        `,
+      output: `
+          
+          console.log(([] || [])[0]);
+        `,
+      errors: [
+        {
+          message: "Variable 'test' is only used once.",
+          type: "VariableDeclarator"
+        }
+      ]
     }
   ]
 });
