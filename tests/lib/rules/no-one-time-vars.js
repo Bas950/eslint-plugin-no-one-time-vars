@@ -153,6 +153,29 @@ ruleTester.run("no-one-time-vars", rule, {
         const test = {};
         export default test;
       `
+    },
+    {
+      code: `
+        export const test = {};
+        console.log(test);
+      `,
+      options: [
+        {
+          ignoreExportedVariables: true
+        }
+      ]
+    },
+    {
+      code: `
+        export const test = {},
+          test2 = {};
+        console.log(test, test2);
+      `,
+      options: [
+        {
+          ignoreExportedVariables: true
+        }
+      ]
     }
   ],
   invalid: [
