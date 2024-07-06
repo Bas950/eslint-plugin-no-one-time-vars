@@ -176,6 +176,21 @@ ruleTester.run("no-one-time-vars", rule, {
           ignoreExportedVariables: true
         }
       ]
+    },
+    {
+      code: `
+          const templateLiteral = "world";
+          console.log(\`Hello \${templateLiteral}\`);
+        `,
+      output: `
+          const templateLiteral = "world";
+          console.log(\`Hello \${templateLiteral}\`);
+        `,
+      options: [
+        {
+          ignoreTemplateLiterals: true
+        }
+      ]
     }
   ],
   invalid: [
@@ -688,6 +703,38 @@ ruleTester.run("no-one-time-vars", rule, {
       errors: [
         {
           message: "Variable 'test' is only used once.",
+          type: "VariableDeclarator"
+        }
+      ]
+    },
+    {
+      code: `
+          const templateLiteral = "world";
+          console.log(\`Hello \${templateLiteral}\`);
+        `,
+      output: `
+          
+          console.log(\`Hello \${"world"}\`);
+        `,
+      errors: [
+        {
+          message: "Variable 'templateLiteral' is only used once.",
+          type: "VariableDeclarator"
+        }
+      ]
+    },
+    {
+      code: `
+          const world = "world";
+          console.log("Hello" + world);
+        `,
+      output: `
+          
+          console.log("Hello" + "world");
+        `,
+      errors: [
+        {
+          message: "Variable 'world' is only used once.",
           type: "VariableDeclarator"
         }
       ]

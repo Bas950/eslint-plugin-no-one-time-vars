@@ -79,3 +79,6 @@ To add an option to the rule configuration do the following:
 - ignoreExportedVariables:
   - type: `Boolean`
   - default: `true`
+- ignoreTemplateLiterals:
+  - type: `Boolean`
+  - default: `false`

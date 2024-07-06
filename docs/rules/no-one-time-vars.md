@@ -25,6 +25,11 @@ console.log(testVar);
 - ignoredVariables
 - allowInsideCallback
 - ignoreFunctionVariables
+- ignoreArrayVariables
+- ignoreObjectVariables
+- ignoreObjectDestructuring
+- ignoreExportedVariables
+- ignoreTemplateLiterals
 
 ### ignoredVariables
 
@@ -78,7 +83,7 @@ const testVar = function () {
 console.log(testVar());
 ```
 
-### ignoreArrayVaraibles
+### ignoreArrayVariables
 
 This option allows you to use array variables.\
 If number is specified this option will allow array variables with length that is >=
@@ -110,3 +115,7 @@ Examples of **correct** code for this rule:
 const test = {};
 export default test;
 ```
+
+### ignoreTemplateLiterals
+
+This option allows variables used in template literals to be used once without being flagged.
