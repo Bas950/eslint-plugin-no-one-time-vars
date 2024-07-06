@@ -738,6 +738,56 @@ ruleTester.run("no-one-time-vars", rule, {
           type: "VariableDeclarator"
         }
       ]
+    },
+    {
+      code: `
+          const obj = { ob1: "obj", ob2: "obj" };
+          export { obj };
+        `,
+      output: `
+          
+          export const obj = { ob1: "obj", ob2: "obj" };
+        `,
+      options: [
+        {
+          ignoreExportedVariables: false
+        }
+      ],
+      errors: [
+        {
+          message: "Variable 'obj' is only used once.",
+          type: "VariableDeclarator"
+        }
+      ]
+    },
+    {
+      code: `
+          const obj = { },
+            obx = { };
+
+          export { obj, obx };
+        `,
+      output: `
+          const obj = { },
+            obx = { };
+
+          export { obj, obx };
+        `,
+      options: [
+        {
+          ignoreExportedVariables: false
+        }
+      ],
+      errors: [
+        {
+          message: "Variable 'obj' is only used once.",
+          type: "VariableDeclarator"
+        },
+        {
+          message: "Variable 'obx' is only used once.",
+          type: "VariableDeclarator"
+        }
+      ]
     }
   ]
 });
