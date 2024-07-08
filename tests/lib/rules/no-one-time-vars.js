@@ -788,6 +788,50 @@ ruleTester.run("no-one-time-vars", rule, {
           type: "VariableDeclarator"
         }
       ]
+    },
+    {
+      code: `
+          export function func() {
+            const a = 1;
+            console.log(a);
+          }
+        `,
+      output: `
+          export function func() {
+            
+            console.log(1);
+          }
+        `,
+      errors: [
+        {
+          message: "Variable 'a' is only used once.",
+          type: "VariableDeclarator"
+        }
+      ]
+    },
+    {
+      code: `
+          export const obj = {
+            method() {
+              const a = 1;
+              console.log(a);
+            },
+          };
+        `,
+      output: `
+          export const obj = {
+            method() {
+              
+              console.log(1);
+            },
+          };
+        `,
+      errors: [
+        {
+          message: "Variable 'a' is only used once.",
+          type: "VariableDeclarator"
+        }
+      ]
     }
   ]
 });
