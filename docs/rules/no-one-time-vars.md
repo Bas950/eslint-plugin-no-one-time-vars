@@ -22,14 +22,34 @@ console.log(testVar);
 
 ## Rule Options
 
-- ignoredVariables
 - allowInsideCallback
+- allowedVariableLength
+- ignoredVariables
 - ignoreFunctionVariables
 - ignoreArrayVariables
 - ignoreObjectVariables
 - ignoreObjectDestructuring
 - ignoreExportedVariables
 - ignoreTemplateLiterals
+
+### allowInsideCallback
+
+This option allows you to use variables in the callback functions.\
+This option is enabled by default.
+
+Examples of **correct** code for this rule:
+
+```js
+const testVar = Date.now();
+
+test.on("ready", () => console.log(Date.now() - testVar));
+```
+
+### allowedVariableLength
+
+If the length of the variable value stringified code is longer than or equal to this value, it will be ignored.
+This option default value is 100
+
 
 ### ignoredVariables
 
@@ -54,19 +74,6 @@ Examples of **correct** code for this rule:
 ```js
 const testVar = "once";
 console.log(testVar);
-```
-
-### allowInsideCallback
-
-This option allows you to use variables in the callback functions.\
-This option is enabled by default.
-
-Examples of **correct** code for this rule:
-
-```js
-const testVar = Date.now();
-
-test.on("ready", () => console.log(Date.now() - testVar));
 ```
 
 ### ignoreFunctionVariables
