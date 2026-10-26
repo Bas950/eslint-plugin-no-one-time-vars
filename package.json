@@ -39,5 +39,10 @@
   "peerDependencies": {
     "eslint": ">=6"
   },
-  "license": "MPL-2.0"
+  "license": "MPL-2.0",
+  "resolutions": {
+    "**/nanoid": "3.3.18",
+    "**/js-yaml": "4.3.2",
+    "mocha/minimatch": "4.2.5"
+  }
 }
